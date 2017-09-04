@@ -32,7 +32,6 @@ class App extends Component {
 
   render() {
     let activeTab = this.state.activeTab;
-    console.log(this.state.cart);
     return(
       <div className="App">
         <Nav activeTab={activeTab} onTabChange={this.handleTabChange}/>
