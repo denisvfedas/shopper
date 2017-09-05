@@ -34,7 +34,11 @@ class App extends Component {
     let activeTab = this.state.activeTab;
     return(
       <div className="App">
-        <Nav activeTab={activeTab} onTabChange={this.handleTabChange}/>
+        <Nav
+          activeTab={activeTab}
+          onTabChange={this.handleTabChange}
+          cart={this.state.cart}
+        />
         <main className="App-content">
           {this.renderContent()}
         </main>

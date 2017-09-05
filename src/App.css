@@ -6,6 +6,9 @@
   margin: 20px;
   padding: 10px;
   border-bottom: 2px solid #508FCA;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .App-nav ul {
   maragin: 0;
