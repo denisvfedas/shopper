@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './Nav.js';
+import Nav from './Nav';
 import ItemPage from './ItemPage';
 import CartPage from './CartPage';
 import {items} from './static-data';
@@ -23,6 +23,17 @@ class App extends Component {
     });
   }
 
+  handleRemoveOne = (item) => {
+    //return first index from cart array with item.id
+    let index = this.state.cart.indexOf(item.id);
+    this.setState({
+      cart: [
+          ...this.state.cart.slice(0, index),
+          ...this.state.cart.slice(index + 1)
+        ]
+    });
+  }
+
   renderContent() {
     switch (this.state.activeTab) {
       default:
@@ -38,7 +49,6 @@ class App extends Component {
       items[itemId]++;
       return items;
     }, {});
-    console.log('itemCounts', itemCounts);
     //create array of items for CartPage
     let cartItems = Object.keys(itemCounts)//returns array of item ids (keys of cartItems)
       //map's through item id array
@@ -46,15 +56,17 @@ class App extends Component {
         //find in array of objects {items} an object which id = itemId
         var item = items.find(item => item.id === parseInt(itemId,10));
       //create an array of items adding new property count
-      console.log('item', item);
       return {
         ...item,
         count: itemCounts[itemId]
       }
       });
-      console.log('cartItems', cartItems);
     return(
-      <CartPage items={cartItems}/>
+      <CartPage
+        items={cartItems}
+        onAddOne={this.handleAddToCart}
+        onRemoveOne={this.handleRemoveOne}
+      />
     );
   }
 
