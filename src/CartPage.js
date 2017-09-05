@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import './CartPage.css';
 
 function CartPage({items, onAddOne, onRemoveOne}) {
   return(
-    <ul className="CartPage">
+    <ul className="CartPage-items">
       {items.map(item =>
         <li key={item.id} className="CartPage-item">
           <Item item={item}>
-            <button
-              className="onRemoveOne"
-              onClick={() => onRemoveOne(item)}>
-                &ndash;
-            </button>
-            <span>{item.count}</span>
-            <button
-              className="onAddOne"
-              onClick={() => onAddOne(item)}>
-                +
-            </button>
+            <div className="CartItem-controls">
+              <button
+                className="CartItem-removeOne"
+                onClick={() => onRemoveOne(item)}>
+                  &ndash;
+              </button>
+              <span className="CartItem-counter">{item.count}</span>
+              <button
+                className="CartItem-addOne"
+                onClick={() => onAddOne(item)}>
+                  +
+              </button>
+            </div>
           </Item>
         </li>
       )}
