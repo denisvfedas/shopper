@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import Total from './Total';
 import './CartPage.css';
 
 function CartPage({items, onAddOne, onRemoveOne}) {
@@ -25,6 +26,9 @@ function CartPage({items, onAddOne, onRemoveOne}) {
           </Item>
         </li>
       )}
+      <div className="CartPage-total">
+        Total: $<Total items={items}/>
+      </div>
     </ul>
   );
 }
