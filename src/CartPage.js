@@ -5,6 +5,13 @@ import Total from './Total';
 import './CartPage.css';
 
 function CartPage({items, onAddOne, onRemoveOne}) {
+  if(items.length === 0){
+    return(
+      <div className="CartPage-empty">
+        Your cart is empty
+      </div>
+    );
+  }
   return(
     <ul className="CartPage-items">
       {items.map(item =>

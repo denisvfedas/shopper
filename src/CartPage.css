@@ -32,3 +32,8 @@
   font-size: 24px;
   text-align: right;
 }
+.CartPage-empty {
+  font-size: 24px;
+  text-align: center;
+  color: #ccc;
+}
